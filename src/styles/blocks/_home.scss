@@ -1,0 +1,122 @@
+.home-container {
+  @include container();
+}
+
+.home-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  height: 100vh;
+}
+
+.home-title {
+  position: relative;
+  margin-bottom: 25px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-align: center;
+  transform: scale3d(1,1,1);
+
+  &:before, &:after {
+    content: 'Farhad Sadykov';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #fff;
+    clip: rect(0, 900px, 0, 0);
+  }
+
+  &:before {
+    left: 3px;
+    text-shadow: 1px 0 crimson;
+    animation: noise 3s infinite linear alternate-reverse;
+  }
+
+  &:after {
+    left: 1px;
+    text-shadow: -1px 0 rgba(45,247,221,1);
+    animation: noise 2s infinite linear alternate-reverse;
+  }
+
+  @keyframes noise{
+    $count: 20;
+    @for $i from 0 through $count{
+      #{percentage($i*(1/$count))}{
+        clip:rect(random(100)+px,9999px,random(100)+px,0);
+      }
+    }
+  }
+
+  @media (max-width: $tablet-max) {
+    font-size: 32px;
+  }
+}
+
+.home-desc {
+  margin-bottom: 20px;
+  // width: 50%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 1.5em;
+  text-align: center;
+
+  @media (max-width: $tablet-max) {
+    font-size: 14px;
+  }
+}
+
+.home-list {
+  display: flex;
+  list-style: none;
+
+  @media (max-width: $tablet-max) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.home-item {
+  padding: 10px;
+}
+
+.home-link {
+  display: block;
+  position: relative;
+  font-size: 18px;
+  font-weight: 900;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(135deg, rgba(156,108,255,1) 20%, rgba(45,247,221,1) 100%);
+  background-size: contain;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(135deg, rgba(156,108,255,1) 0%, rgba(45,247,221,1) 100%);
+    left: 0;
+    bottom: -3px;
+    transition: .2s 0s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover:before {
+    transform: scale(1);
+  }
+
+  @media (max-width: $tablet-max) {
+    font-size: 16px;
+  }
+}
