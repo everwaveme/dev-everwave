@@ -1,0 +1,21 @@
+.doge {
+  position: absolute;
+  left: -150px;
+  bottom: -150px;
+  z-index: -1;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  animation: dogeToTheMoon 3s linear alternate 7s;
+
+  @keyframes dogeToTheMoon {
+    from{
+      transform: scale(1.5);
+    }
+    to{
+      left: 43%;
+      bottom: 43%;
+      transform: scale(0);
+    }
+  }
+}
